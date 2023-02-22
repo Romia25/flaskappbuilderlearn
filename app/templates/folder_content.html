@@ -1,0 +1,65 @@
+{% extends "appbuilder/baselayout.html" %}
+
+{% block content %}
+
+{# {% block for %} --> #}
+{#
+    <ol>
+    {% for file in files_and_dir %}
+    <li>
+        
+        {{ file.name }}
+        
+    </li>
+    {% endfor %}
+    </ol>
+#}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Last modified </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {{parent_path}}
+                </td>
+            </tr>
+            {% for file in files_and_di %}
+            <tr>
+                <td>
+                    {{ file["filename"] }}
+                </td>
+                
+                <td>
+                    {{ file["file_last_modified"] }}
+                </td>
+
+                <td>
+                    <input type="button", value="Parse File / Navigate directory"
+                    onsubmit="{{ file['button'] }}"/>
+                    {#
+                        {{ file["button"] }}
+                    #}
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <style>
+        table {width: 100%;
+
+        }
+        td {word-wrap: break-word;
+
+        }
+    </style>
+
+{% endblock %}
